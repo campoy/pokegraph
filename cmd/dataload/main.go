@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"os"
 	"path/filepath"
 	"strings"
 	"sync"
@@ -82,57 +81,22 @@ func loadType(client *dgo.Dgraph, typename, path string) error {
 	fmt.Printf("\nloading %s (~%d items)\n", typename, len(fis))
 	bar := progressbar.New(len(fis))
 
-	files := make(chan os.FileInfo, len(fis))
 	for _, fi := range fis {
-		files <- fi
-	}
-	close(files)
-
-	workers := 100
-	var wg sync.WaitGroup
-
-	wg.Add(workers)
-	type task struct {
-		data map[string]interface{}
-		err  error
-	}
-
-	tasks := make(chan task, len(fis))
-	for i := 0; i < workers; i++ {
-		go func() {
-			defer wg.Done()
-			for fi := range files {
-				if !fi.IsDir() {
-					bar.Add(1)
-					continue
-				}
-				data, err := loadFile(client, typename, filepath.Join(path, fi.Name()))
-				tasks <- task{data, err}
+		if fi.IsDir() {
+			err := loadFile(client, typename, filepath.Join(path, fi.Name()))
+			if err != nil {
+				return errors.Wrapf(err, "could not load file %s", fi.Name())
 			}
-		}()
-	}
-	go func() {
-		wg.Wait()
-		close(tasks)
-	}()
-
-	for task := range tasks {
-		if task.err != nil {
-			return err
-		}
-		if err := mutate(client, task.data); err != nil {
-			return errors.Wrapf(err, "could not mutate")
 		}
 		bar.Add(1)
 	}
-
 	return nil
 }
 
-func loadFile(client *dgo.Dgraph, typename, path string) (map[string]interface{}, error) {
+func loadFile(client *dgo.Dgraph, typename, path string) error {
 	var data map[string]interface{}
 	if err := parseJSON(filepath.Join(path, "index.json"), &data); err != nil {
-		return nil, errors.Wrapf(err, "could not parse JSON")
+		return errors.Wrapf(err, "could not parse JSON")
 	}
 
 	// The top level objects don't have a URL, we need to add it.
@@ -140,7 +104,11 @@ func loadFile(client *dgo.Dgraph, typename, path string) (map[string]interface{}
 	data["dgraph.type"] = typename
 
 	preprocess(data, path)
-	return data, nil
+
+	if err := mutate(client, data); err != nil {
+		return errors.Wrapf(err, "could not mutate")
+	}
+	return nil
 }
 
 func parseJSON(path string, dest interface{}) error {
