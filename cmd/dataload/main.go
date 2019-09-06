@@ -102,10 +102,12 @@ func loadType(client *dgo.Dgraph, typename, path string) error {
 		go func() {
 			defer wg.Done()
 			for fi := range files {
-				if fi.IsDir() {
-					data, err := loadFile(client, typename, filepath.Join(path, fi.Name()))
-					tasks <- task{data, err}
+				if !fi.IsDir() {
+					bar.Add(1)
+					continue
 				}
+				data, err := loadFile(client, typename, filepath.Join(path, fi.Name()))
+				tasks <- task{data, err}
 			}
 		}()
 	}
