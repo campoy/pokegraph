@@ -1,0 +1,108 @@
+{
+    "dgraph.type": "ability",
+    "effect_changes": [
+        {
+            "effect_entries": [
+                {
+                    "effect": "Has no effect in battle.",
+                    "language": {
+                        "name": "en",
+                        "uid": "_:3",
+                        "url": "/api/v2/language/9/"
+                    }
+                }
+            ],
+            "version_group": {
+                "name": "black-white",
+                "uid": "_:4",
+                "url": "/api/v2/version-group/11/"
+            }
+        }
+    ],
+    "effect_entries": [
+        {
+            "effect": "This Pokémon's damaging moves have a 10% chance to make the target flinch with each hit if they do not already cause flinching as a secondary effect.\n\nThis ability does not stack with a held item.\n\nOverworld: The wild encounter rate is halved while this Pokémon is first in the party.",
+            "language": {
+                "name": "en",
+                "uid": "_:3",
+                "url": "/api/v2/language/9/"
+            },
+            "short_effect": "Has a 10% chance of making target Pokémon flinch with each hit."
+        }
+    ],
+    "generation": {
+        "name": "generation-iii",
+        "uid": "_:2",
+        "url": "/api/v2/generation/3/"
+    },
+    "id": 1,
+    "is_main_series": true,
+    "name": "stench",
+    "pokemon": [
+        {
+            "is_hidden": true,
+            "pokemon": {
+                "name": "gloom",
+                "uid": "_:25",
+                "url": "/api/v2/pokemon/44/"
+            },
+            "slot": 3
+        },
+        {
+            "is_hidden": false,
+            "pokemon": {
+                "name": "grimer",
+                "uid": "_:26",
+                "url": "/api/v2/pokemon/88/"
+            },
+            "slot": 1
+        },
+        {
+            "is_hidden": false,
+            "pokemon": {
+                "name": "muk",
+                "uid": "_:27",
+                "url": "/api/v2/pokemon/89/"
+            },
+            "slot": 1
+        },
+        {
+            "is_hidden": false,
+            "pokemon": {
+                "name": "stunky",
+                "uid": "_:28",
+                "url": "/api/v2/pokemon/434/"
+            },
+            "slot": 1
+        },
+        {
+            "is_hidden": false,
+            "pokemon": {
+                "name": "skuntank",
+                "uid": "_:29",
+                "url": "/api/v2/pokemon/435/"
+            },
+            "slot": 1
+        },
+        {
+            "is_hidden": false,
+            "pokemon": {
+                "name": "trubbish",
+                "uid": "_:30",
+                "url": "/api/v2/pokemon/568/"
+            },
+            "slot": 1
+        },
+        {
+            "is_hidden": false,
+            "pokemon": {
+                "name": "garbodor",
+                "uid": "_:31",
+                "url": "/api/v2/pokemon/569/"
+            },
+            "slot": 1
+        }
+    ],
+    "uid": "_:1",
+    "url": "/api/v2/ability/1"
+}

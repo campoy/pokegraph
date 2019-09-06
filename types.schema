@@ -1,0 +1,481 @@
+type gender {
+	pokemon_species_details: [uid]
+	required_for_evolution: [uid]
+	name: string
+	id: int
+	url: string
+}
+
+type move-battle-style {
+	name: string
+	id: int
+	url: string
+}
+
+type move-damage-class {
+	moves: [uid]
+	name: string
+	id: int
+	url: string
+	descriptions: [uid]
+}
+
+type evolution-trigger {
+	name: string
+	id: int
+	url: string
+	pokemon_species: [uid]
+}
+
+type berry-firmness {
+	name: string
+	id: int
+	url: string
+	berries: [uid]
+}
+
+type berry-flavor {
+	contest_type: [uid]
+	name: string
+	id: int
+	url: string
+	berries: [uid]
+}
+
+type contest-type {
+	berry_flavor: [uid]
+	name: string
+	id: int
+	url: string
+}
+
+type pal-park-area {
+	url: string
+	pokemon_encounters: [uid]
+	name: string
+	id: int
+}
+
+type pokeathlon-stat {
+	affecting_natures: [uid]
+	name: string
+	id: int
+	url: string
+}
+
+type encounter-condition {
+	values: [uid]
+	id: int
+	url: string
+	name: string
+}
+
+type growth-rate {
+	levels: [uid]
+	descriptions: [uid]
+	formula: string
+	name: string
+	id: int
+	url: string
+	pokemon_species: [uid]
+}
+
+type generation {
+	pokemon_species: [uid]
+	id: int
+	moves: [uid]
+	name: string
+	version_groups: [uid]
+	abilities: [uid]
+	main_region: [uid]
+	url: string
+	types: [uid]
+}
+
+type item-fling-effect {
+	id: int
+	url: string
+	items: [uid]
+	effect_entries: [uid]
+	name: string
+}
+
+type region {
+	url: string
+	main_generation: [uid]
+	pokedexes: [uid]
+	name: string
+	locations: [uid]
+	version_groups: [uid]
+	id: int
+}
+
+type item-attribute {
+	id: int
+	url: string
+	items: [uid]
+	descriptions: [uid]
+	name: string
+}
+
+type item-pocket {
+	url: string
+	categories: [uid]
+	name: string
+	id: int
+}
+
+type stat {
+	move_damage_class: [uid]
+	is_battle_only: bool
+	name: string
+	id: int
+	characteristics: [uid]
+	affecting_moves: [uid]
+	game_index: int
+	affecting_natures: [uid]
+	url: string
+}
+
+type pokemon-habitat {
+	name: string
+	id: int
+	url: string
+	pokemon_species: [uid]
+}
+
+type move-learn-method {
+	id: int
+	url: string
+	descriptions: [uid]
+	name: string
+	version_groups: [uid]
+}
+
+type pokemon-color {
+	id: int
+	url: string
+	pokemon_species: [uid]
+	name: string
+}
+
+type language {
+	iso3166: string
+	official: bool
+	iso639: string
+	name: string
+	id: int
+	url: string
+}
+
+type move-category {
+	descriptions: [uid]
+	moves: [uid]
+	name: string
+	id: int
+	url: string
+}
+
+type move-target {
+	url: string
+	descriptions: [uid]
+	moves: [uid]
+	name: string
+	id: int
+}
+
+type pokedex {
+	region: [uid]
+	pokemon_entries: [uid]
+	is_main_series: bool
+	descriptions: [uid]
+	name: string
+	id: int
+	url: string
+	version_groups: [uid]
+}
+
+type pokemon-shape {
+	awesome_names: [uid]
+	name: string
+	id: int
+	url: string
+	pokemon_species: [uid]
+}
+
+type egg-group {
+	name: string
+	id: int
+	url: string
+	pokemon_species: [uid]
+}
+
+type encounter-method {
+	name: string
+	id: int
+	url: string
+	order: int
+}
+
+type version-group {
+	url: string
+	name: string
+	regions: [uid]
+	versions: [uid]
+	pokedexes: [uid]
+	move_learn_methods: [uid]
+	generation: [uid]
+	id: int
+	order: int
+}
+
+type encounter-condition-value {
+	condition: [uid]
+	name: string
+	id: int
+	url: string
+}
+
+type type {
+	id: int
+	moves: [uid]
+	generation: [uid]
+	move_damage_class: [uid]
+	damage_relations: [uid]
+	pokemon: [uid]
+	url: string
+	name: string
+	game_indices: [uid]
+}
+
+type move-ailment {
+	moves: [uid]
+	name: string
+	id: int
+	url: string
+}
+
+type super-contest-effect {
+	url: string
+	appeal: int
+	moves: [uid]
+	flavor_text_entries: [uid]
+	id: int
+}
+
+type nature {
+	name: string
+	likes_flavor: [uid]
+	hates_flavor: [uid]
+	increased_stat: [uid]
+	decreased_stat: [uid]
+	move_battle_style_preferences: [uid]
+	pokeathlon_stat_changes: [uid]
+	id: int
+	url: string
+}
+
+type characteristic {
+	id: int
+	url: string
+	highest_stat: [uid]
+	descriptions: [uid]
+	gene_modulo: int
+	possible_values: int
+}
+
+type version {
+	id: int
+	url: string
+	version_group: [uid]
+	name: string
+}
+
+type contest-effect {
+	url: string
+	appeal: int
+	effect_entries: [uid]
+	jam: int
+	flavor_text_entries: [uid]
+	id: int
+}
+
+type item-category {
+	url: string
+	items: [uid]
+	pocket: [uid]
+	name: string
+	id: int
+}
+
+type berry {
+	url: string
+	soil_dryness: int
+	natural_gift_power: int
+	max_harvest: int
+	firmness: [uid]
+	item: [uid]
+	natural_gift_type: [uid]
+	size: int
+	name: string
+	smoothness: int
+	growth_time: int
+	id: int
+	flavors: [uid]
+}
+
+type ability {
+	url: string
+	effect_changes: [uid]
+	generation: [uid]
+	name: string
+	pokemon: [uid]
+	id: int
+	is_main_series: bool
+	flavor_text_entries: [uid]
+	effect_entries: [uid]
+}
+
+type evolution-chain {
+	chain: [uid]
+	id: int
+	url: string
+	baby_trigger_item: [uid]
+}
+
+type location-area {
+	location: [uid]
+	id: int
+	url: string
+	game_index: int
+	pokemon_encounters: [uid]
+	name: string
+	encounter_method_rates: [uid]
+}
+
+type move {
+	target: [uid]
+	damage_class: [uid]
+	url: string
+	contest_type: [uid]
+	meta: [uid]
+	generation: [uid]
+	priority: int
+	pp: int
+	machines: [uid]
+	name: string
+	contest_combos: [uid]
+	effect_chance: int
+	effect_entries: [uid]
+	contest_effect: [uid]
+	super_contest_effect: [uid]
+	id: int
+	stat_changes: [uid]
+	power: int
+	type: [uid]
+	accuracy: int
+	flavor_text_entries: [uid]
+	effect_changes: [uid]
+	past_values: [uid]
+}
+
+type location {
+	name: string
+	region: [uid]
+	id: int
+	url: string
+	game_indices: [uid]
+	areas: [uid]
+}
+
+type pokemon-species {
+	evolution_chain: [uid]
+	generation: [uid]
+	flavor_text_entries: [uid]
+	growth_rate: [uid]
+	order: int
+	evolves_from_species: [uid]
+	form_descriptions: [uid]
+	habitat: [uid]
+	egg_groups: [uid]
+	varieties: [uid]
+	url: string
+	pokedex_numbers: [uid]
+	pal_park_encounters: [uid]
+	shape: [uid]
+	base_happiness: int
+	forms_switchable: bool
+	hatch_counter: int
+	is_baby: bool
+	id: int
+	name: string
+	color: [uid]
+	genera: [uid]
+	has_gender_differences: bool
+	capture_rate: int
+	gender_rate: int
+}
+
+type item {
+	fling_effect: [uid]
+	flavor_text_entries: [uid]
+	id: int
+	cost: int
+	fling_power: int
+	effect_entries: [uid]
+	game_indices: [uid]
+	baby_trigger_for: [uid]
+	url: string
+	sprites: [uid]
+	attributes: [uid]
+	held_by_pokemon: [uid]
+	category: [uid]
+	name: string
+	machines: [uid]
+}
+
+type pokemon {
+	held_items: [uid]
+	species: [uid]
+	forms: [uid]
+	order: int
+	is_default: bool
+	base_experience: int
+	abilities: [uid]
+	stats: [uid]
+	name: string
+	id: int
+	location_area_encounters: string
+	game_indices: [uid]
+	sprites: [uid]
+	types: [uid]
+	url: string
+	moves: [uid]
+	weight: int
+	height: int
+}
+
+type pokemon-form {
+	is_battle_only: bool
+	name: string
+	url: string
+	is_default: bool
+	id: int
+	form_name: string
+	order: int
+	pokemon: [uid]
+	form_names: [uid]
+	form_order: int
+	sprites: [uid]
+	is_mega: bool
+	version_group: [uid]
+}
+
+type machine {
+	url: string
+	move: [uid]
+	item: [uid]
+	version_group: [uid]
+	id: int
+}
+
