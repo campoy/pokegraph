@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"sort"
 	"strings"
 
 	"github.com/dgraph-io/dgo/v2"
@@ -95,6 +96,7 @@ func fetchTypes(client *dgo.Dgraph) ([]string, error) {
 	for _, t := range data.Types[0].GroupBy {
 		types = append(types, t.Type)
 	}
+	sort.Strings(types)
 	return types, nil
 }
 
@@ -108,6 +110,7 @@ func findFields(client *dgo.Dgraph, typename string, preds map[string]Predicate)
 			predNames = append(predNames, name)
 		}
 	}
+	sort.Strings(predNames)
 	query := fmt.Sprintf("{ values(func: type(%s)) { %s } }",
 		typename, strings.Join(predNames, "\n"))
 
